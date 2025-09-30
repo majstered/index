@@ -3,12 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nasze projekty — Strona główna</title>
+  <title>Ramzi • Hub</title>
   <meta name="description" content="Hub naszych projektów: Siedliszcze, Strażopis, Odpady, Yanopis oraz rozdziały książki Znaki Maryi."/>
   <style>
-    /* =========================
-       ZMIENNE, KOLORY, MOTYW
-       ========================= */
+    /* ========= ZMIENNE / MOTYW ========= */
     :root{
       --bg:#fbfaf7;
       --card:#ffffff;
@@ -16,29 +14,19 @@
       --muted:#6b7280;
       --accent:#1f5fbf;
       --accent-ink:#ffffff;
-      --blue:#cfe5ff;      /* delikatny maryjny baner */
-      --blue-ink:#001a44;
-      --sand:#fff7dc;
+      --border:#e8e8ef;
       --radius:16px;
       --shadow:0 10px 30px rgba(0,0,0,.08);
       --maxw:1100px;
-      --border:#e8e8ef;
-      --chip:#eef3ff;
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#10131a;
-        --card:#141824;
-        --ink:#e9eef7;
-        --muted:#aab3c6;
-        --accent:#7aa8ff;
-        --accent-ink:#001a44;
-        --blue:#0c2e63;
-        --blue-ink:#dfe9ff;
-        --sand:#2a2430;
-        --border:#263049;
-        --chip:#112244;
-      }
+
+      /* przyciski (lepiej widoczne w nocy) */
+      --chip-bg:#eef3ff;
+      --chip-ink:#001a44;
+      --chip-border:#d7def5;
+
+      --btn-bg:#ffffff;
+      --btn-ink:#1f2430;
+      --btn-border:#e8e8ef;
     }
     .dark{
       --bg:#10131a;
@@ -47,87 +35,64 @@
       --muted:#aab3c6;
       --accent:#7aa8ff;
       --accent-ink:#001a44;
-      --blue:#0c2e63;
-      --blue-ink:#dfe9ff;
-      --sand:#2a2430;
       --border:#263049;
-      --chip:#112244;
+
+      --chip-bg:#1d2a46;     /* czytelne „pastylki” w nocy */
+      --chip-ink:#dfe7ff;
+      --chip-border:#2b3a5e;
+
+      --btn-bg:#1a2030;      /* guziki w nav */
+      --btn-ink:#e9eef7;
+      --btn-border:#2a3552;
     }
 
-    /* =========================
-       BAZA
-       ========================= */
+    /* ========= BAZA ========= */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji";
+      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
       background:var(--bg);
       color:var(--ink);
     }
     a{color:inherit;text-decoration:none}
     img{max-width:100%;display:block}
-
     .wrap{max-width:var(--maxw); margin:0 auto; padding:24px}
 
-    /* =========================
-       NAVBAR
-       ========================= */
+    /* ========= NAVBAR ========= */
     .nav{
       position:sticky; top:0; z-index:100;
       background:rgba(255,255,255,.6);
-      backdrop-filter:saturate(1.2) blur(10px);
+      backdrop-filter:saturate(1.1) blur(10px);
       border-bottom:1px solid var(--border);
     }
-    .nav .row{display:flex; gap:12px; align-items:center; justify-content:space-between; padding:10px 24px; max-width:var(--maxw); margin:0 auto}
+    .dark .nav{ background:rgba(20,24,36,.6); }
+    .nav .row{
+      display:flex; gap:12px; align-items:center; justify-content:space-between;
+      padding:10px 24px; max-width:var(--maxw); margin:0 auto
+    }
     .brand{font-weight:700; letter-spacing:.2px}
     .navlinks{display:flex; gap:10px; flex-wrap:wrap}
     .nav a.btn{
-      padding:8px 12px; border:1px solid var(--border);
-      border-radius:999px; background:var(--card)
+      padding:8px 12px; border:1px solid var(--btn-border);
+      border-radius:999px; background:var(--btn-bg); color:var(--btn-ink)
     }
     .toggle{
-      border:1px solid var(--border); background:var(--card);
-      border-radius:999px; padding:8px 12px; cursor:pointer
+      border:1px solid var(--btn-border); background:var(--btn-bg);
+      color:var(--btn-ink); border-radius:999px; padding:8px 12px; cursor:pointer
     }
 
-    /* =========================
-       HERO
-       ========================= */
-    .hero{
-      background:linear-gradient(180deg, var(--blue), transparent 70%);
-      border-bottom:1px solid var(--border);
-    }
-    .hero .inner{max-width:var(--maxw); margin:0 auto; padding:48px 24px 28px}
-    .hero h1{margin:0 0 8px; font-size: clamp(28px, 5vw, 40px); color:var(--blue-ink)}
-    .hero p{margin:0; color:var(--blue-ink); opacity:.9}
-    .hero-art{
-      position:relative; margin-top:24px; border-radius:var(--radius);
-      background:var(--card); box-shadow:var(--shadow); overflow:hidden; border:1px solid var(--border)
-    }
-    .hero-art svg{width:100%; height:auto; display:block}
-
-    /* =========================
-       PANEL STEROWANIA (wyszukiwarka + filtry)
-       ========================= */
-    .controls{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:26px 0}
-    .search{
-      flex:1 1 280px; display:flex; align-items:center; gap:10px;
-      background:var(--card); border:1px solid var(--border); border-radius:12px; padding:10px 12px
-    }
-    .search input{
-      border:0; outline:0; background:transparent; color:var(--ink); width:100%
-    }
-    .chips{display:flex; gap:8px; flex-wrap:wrap}
+    /* ========= KONTROLA (TYLKO FILTRY) ========= */
+    .controls{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:20px 0}
+    .chips{display:flex; gap:10px; flex-wrap:wrap}
     .chip{
-      padding:8px 12px; border-radius:999px; background:var(--chip);
-      border:1px solid var(--border); cursor:pointer; font-size:14px
+      padding:10px 14px; border-radius:999px;
+      background:var(--chip-bg); color:var(--chip-ink);
+      border:1px solid var(--chip-border); cursor:pointer; font-weight:600
     }
     .chip.active{background:var(--accent); color:var(--accent-ink); border-color:transparent}
 
-    /* =========================
-       GRID KAFELKÓW
-       ========================= */
+    /* ========= GRID ========= */
     .grid{
       display:grid; gap:16px;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -139,25 +104,25 @@
     }
     .card .thumb{
       aspect-ratio: 16/9; display:flex; align-items:center; justify-content:center;
-      background:linear-gradient(135deg, var(--sand), #ffffff 60%); font-size:38px
+      background:linear-gradient(135deg, #fff7dc, #ffffff 60%); font-size:38px
+    }
+    .dark .card .thumb{
+      background:linear-gradient(135deg, #2a2430, #1a2030 60%);
     }
     .card .body{padding:14px 14px 8px}
     .card h3{margin:0 0 6px; font-size:18px}
-    .card p{margin:0 0 12px; color:var(--muted); font-size:14px}
-    .tags{display:flex; gap:6px; flex-wrap:wrap; margin-top:auto; padding:0 14px 14px}
-    .tag{font-size:12px; padding:4px 8px; border-radius:999px; background:var(--chip); border:1px solid var(--border)}
+    .card p{margin:0 0 14px; color:var(--muted); font-size:14px}
     .go{
       margin:0 14px 14px; display:inline-block; padding:10px 14px; border-radius:12px;
-      background:var(--accent); color:var(--accent-ink); text-align:center; font-weight:600
+      background:var(--accent); color:var(--accent-ink); text-align:center; font-weight:700
     }
 
-    /* =========================
-       STOPKA
-       ========================= */
+    /* ========= STOPKA ========= */
     footer{
       margin-top:36px; border-top:1px solid var(--border);
       background:linear-gradient(180deg, transparent, rgba(0,0,0,.02));
     }
+    .dark footer{ background:linear-gradient(180deg, transparent, rgba(255,255,255,.02)); }
     footer .wrap{padding-top:18px; padding-bottom:32px; color:var(--muted); font-size:14px}
   </style>
 </head>
@@ -176,44 +141,10 @@
     </div>
   </div>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="inner">
-      <h1>Nasze projekty w jednym miejscu</h1>
-      <p>Strona główna łącząca wszystkie tematy — od lokalnej społeczności, przez ekologię i publicystykę, po rozdziały książki <em>„Znaki Maryi”</em>.</p>
-
-      <!-- Ilustracja: delikatna fala + symbol róży/hostii (lekki, neutralny motyw) -->
-      <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 1200 360" xmlns="http://www.w3.org/2000/svg" role="img">
-          <defs>
-            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stop-color="var(--sand)"/>
-              <stop offset="100%" stop-color="#ffffff"/>
-            </linearGradient>
-          </defs>
-          <rect width="1200" height="360" fill="url(#g1)"/>
-          <!-- Fala -->
-          <path d="M0,240 C200,180 400,300 600,240 C800,180 1000,300 1200,240 L1200,360 L0,360 Z" fill="var(--blue)" opacity=".25"/>
-          <!-- Delikatny znak róży (symboliczny) -->
-          <g transform="translate(950,120)">
-            <circle cx="0" cy="0" r="42" fill="none" stroke="var(--blue-ink)" stroke-width="2" opacity=".35"/>
-            <path d="M-18,0 a18,18 0 1,0 36,0 a18,18 0 1,0 -36,0" fill="none" stroke="var(--blue-ink)" stroke-width="1.5" opacity=".35"/>
-            <path d="M0,-22 C4,-10 10,-8 12,0 C10,8 4,10 0,22 C-4,10 -10,8 -12,0 C-10,-8 -4,-10 0,-22 Z" fill="none" stroke="var(--blue-ink)" stroke-width="1.5" opacity=".35"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </header>
-
   <main class="wrap">
-    <!-- KONTROLA: wyszukiwarka + filtry -->
+    <!-- TYLKO FILTRY (bez wyszukiwarki) -->
     <div class="controls">
-      <label class="search" title="Szukaj po tytule i opisie">
-        <span>🔎</span>
-        <input id="q" type="search" placeholder="Szukaj projektów lub rozdziałów…" />
-      </label>
       <div class="chips" id="chips">
-        <!-- Chip „Wszystko” zawsze pierwszy -->
         <button class="chip active" data-cat="*">Wszystko</button>
         <button class="chip" data-cat="Miejscowość">Miejscowość</button>
         <button class="chip" data-cat="Publicystyka">Publicystyka</button>
@@ -223,10 +154,10 @@
       </div>
     </div>
 
-    <!-- GRID zapełniany JS-em -->
+    <!-- GRID -->
     <section id="grid" class="grid" aria-live="polite"></section>
 
-    <!-- NOSCRIPT fallback (prosta lista) -->
+    <!-- NOSCRIPT fallback -->
     <noscript>
       <ul>
         <li><a href="https://majstered.github.io/siedliszcze.github.io/">Siedliszcze</a> — strona o miejscowości.</li>
@@ -239,85 +170,68 @@
 
   <footer>
     <div class="wrap">
-      © 2025 Ramzi • Hub projektów • <span style="opacity:.8">GitHub Pages</span>
+      © 2025 Ramzi • Hub projektów • GitHub Pages
     </div>
   </footer>
 
   <script>
-    /* =========================
-       DANE: DOPISUJ TUTAJ NOWE KAFELKI
-       Jak dodać nowy link?
-       1) Skopiuj jeden obiekt i zmień: title, url, desc, emoji, cat, tags.
-       2) Zapisz — pojawi się automatycznie w siatce i w wyszukiwarce.
-       ========================= */
+    /* ===== DANE (dopisz nowe obiekty, by dodać link) ===== */
     const projects = [
       {
         title: "Siedliszcze — strona główna",
         url: "https://majstered.github.io/siedliszcze.github.io/",
         desc: "Aktualności, zdjęcia i informacje o naszej miejscowości.",
         emoji: "🏠",
-        cat: "Miejscowość",
-        tags: ["lokalnie","społeczność"]
+        cat: "Miejscowość"
       },
       {
         title: "Strażopis",
         url: "https://majstered.github.io/strazopis.github.io/",
         desc: "Publicystyka, opowieści i reportaże.",
         emoji: "✍️",
-        cat: "Publicystyka",
-        tags: ["artykuły","felietony"]
+        cat: "Publicystyka"
       },
       {
         title: "Odpady • Ekologia",
         url: "https://majstered.github.io/odpady.github.io/",
         desc: "Segregacja, kalendarze odbioru i porady zero-waste.",
         emoji: "♻️",
-        cat: "Ekologia",
-        tags: ["recykling","poradnik"]
+        cat: "Ekologia"
       },
       {
         title: "Yanopis",
         url: "https://majstered.github.io/yanopis.github.io/",
         desc: "Duchowe rozważania, modlitwy, materiały do czytania.",
         emoji: "📜",
-        cat: "Duchowość",
-        tags: ["modlitwa","refleksje"]
+        cat: "Duchowość"
       },
-
-      /* ====== Placeholdery pod książkę „Znaki Maryi” (możesz podmienić URL-e) ====== */
+      /* ===== Znaki Maryi — placeholdery (podmień URL-e) ===== */
       {
         title: "Znaki Maryi — Rozdział 1: Jak spotkać Maryję?",
         url: "#",
         desc: "Wprowadzenie w ciszę, skupienie i drogę serca.",
         emoji: "🌹",
-        cat: "Znaki Maryi",
-        tags: ["wprowadzenie","modlitwa"]
+        cat: "Znaki Maryi"
       },
       {
         title: "Znaki Maryi — Różaniec",
         url: "#",
         desc: "Znaczenie różańca, obietnice i praktyka na co dzień.",
         emoji: "📿",
-        cat: "Znaki Maryi",
-        tags: ["różaniec","praktyka"]
+        cat: "Znaki Maryi"
       },
       {
         title: "Znaki Maryi — Objawienia przez wieki",
         url: "#",
         desc: "Chronologia uznanych objawień i ich przesłanie.",
         emoji: "🕊️",
-        cat: "Znaki Maryi",
-        tags: ["historia","przesłanie"]
+        cat: "Znaki Maryi"
       },
     ];
 
-    /* =========================
-       RENDER SIATKI
-       ========================= */
+    /* ===== RENDER ===== */
     const grid = document.getElementById('grid');
-    const q = document.getElementById('q');
     const chips = document.getElementById('chips');
-
     let activeCat = '*';
 
     function createCard(item){
@@ -329,37 +243,17 @@
           <h3>${item.title}</h3>
           <p>${item.desc}</p>
         </div>
-        <div class="tags">
-          <span class="tag">${item.cat}</span>
-          ${ (item.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('') }
-        </div>
         <a class="go" href="${item.url}">Przejdź</a>
       `;
       return el;
     }
 
     function applyFilters(){
-      const needle = (q.value || '').trim().toLowerCase();
       grid.innerHTML = '';
       projects
         .filter(it => activeCat==='*' ? true : it.cat===activeCat)
-        .filter(it => {
-          if(!needle) return true;
-          const hay = [it.title, it.desc, it.cat, ...(it.tags||[])].join(' ').toLowerCase();
-          return hay.includes(needle);
-        })
         .forEach(it => grid.appendChild(createCard(it)));
-
-      if(!grid.children.length){
-        const empty = document.createElement('div');
-        empty.style.color = 'var(--muted)';
-        empty.textContent = 'Brak wyników. Spróbuj innego hasła lub filtra.';
-        grid.appendChild(empty);
-      }
     }
-
-    // WYSZUKIWARKA
-    q.addEventListener('input', applyFilters);
 
     // FILTRY (chips)
     chips.addEventListener('click', (e)=>{

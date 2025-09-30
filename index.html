@@ -6,131 +6,42 @@
   <title>Ramzi • Hub</title>
   <meta name="description" content="Hub naszych projektów: Siedliszcze, Strażopis, Odpady, Yanopis oraz rozdziały książki Znaki Maryi."/>
   <style>
-    /* ========= ZMIENNE / MOTYW ========= */
     :root{
-      --bg:#fbfaf7;
-      --card:#ffffff;
-      --ink:#1f2430;
-      --muted:#6b7280;
-      --accent:#1f5fbf;
-      --accent-ink:#ffffff;
-      --border:#e8e8ef;
-      --radius:16px;
-      --shadow:0 10px 30px rgba(0,0,0,.08);
-      --maxw:1100px;
-
-      /* przyciski (lepiej widoczne w nocy) */
-      --chip-bg:#eef3ff;
-      --chip-ink:#001a44;
-      --chip-border:#d7def5;
-
-      --btn-bg:#ffffff;
-      --btn-ink:#1f2430;
-      --btn-border:#e8e8ef;
+      --bg:#fbfaf7; --card:#ffffff; --ink:#1f2430; --muted:#6b7280;
+      --accent:#1f5fbf; --accent-ink:#ffffff; --border:#e8e8ef;
+      --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.08); --maxw:1100px;
     }
     .dark{
-      --bg:#10131a;
-      --card:#141824;
-      --ink:#e9eef7;
-      --muted:#aab3c6;
-      --accent:#7aa8ff;
-      --accent-ink:#001a44;
-      --border:#263049;
-
-      --chip-bg:#1d2a46;     /* czytelne „pastylki” w nocy */
-      --chip-ink:#dfe7ff;
-      --chip-border:#2b3a5e;
-
-      --btn-bg:#1a2030;      /* guziki w nav */
-      --btn-ink:#e9eef7;
-      --btn-border:#2a3552;
+      --bg:#10131a; --card:#141824; --ink:#e9eef7; --muted:#aab3c6;
+      --accent:#7aa8ff; --accent-ink:#001a44; --border:#263049;
     }
-
-    /* ========= BAZA ========= */
     *{box-sizing:border-box}
     html,body{height:100%}
-    body{
-      margin:0;
-      font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background:var(--bg);
-      color:var(--ink);
-    }
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    body{margin:0; font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial; background:var(--bg); color:var(--ink)}
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
     .wrap{max-width:var(--maxw); margin:0 auto; padding:24px}
 
-    /* ========= NAVBAR ========= */
-    .nav{
-      position:sticky; top:0; z-index:100;
-      background:rgba(255,255,255,.6);
-      backdrop-filter:saturate(1.1) blur(10px);
-      border-bottom:1px solid var(--border);
-    }
-    .dark .nav{ background:rgba(20,24,36,.6); }
-    .nav .row{
-      display:flex; gap:12px; align-items:center; justify-content:space-between;
-      padding:10px 24px; max-width:var(--maxw); margin:0 auto
-    }
-    .brand{font-weight:700; letter-spacing:.2px}
-    .navlinks{display:flex; gap:10px; flex-wrap:wrap}
-    .nav a.btn{
-      padding:8px 12px; border:1px solid var(--btn-border);
-      border-radius:999px; background:var(--btn-bg); color:var(--btn-ink)
-    }
-    .toggle{
-      border:1px solid var(--btn-border); background:var(--btn-bg);
-      color:var(--btn-ink); border-radius:999px; padding:8px 12px; cursor:pointer
-    }
-
-    /* ========= KONTROLA (TYLKO FILTRY) ========= */
-    .controls{display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin:20px 0}
-    .chips{display:flex; gap:10px; flex-wrap:wrap}
-    .chip{
-      padding:10px 14px; border-radius:999px;
-      background:var(--chip-bg); color:var(--chip-ink);
-      border:1px solid var(--chip-border); cursor:pointer; font-weight:600
-    }
-    .chip.active{background:var(--accent); color:var(--accent-ink); border-color:transparent}
-
-    /* ========= GRID ========= */
-    .grid{
-      display:grid; gap:16px;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      align-items:stretch
-    }
-    .card{
-      background:var(--card); border:1px solid var(--border); border-radius:18px;
-      box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden
-    }
-    .card .thumb{
-      aspect-ratio: 16/9; display:flex; align-items:center; justify-content:center;
-      background:linear-gradient(135deg, #fff7dc, #ffffff 60%); font-size:38px
-    }
-    .dark .card .thumb{
-      background:linear-gradient(135deg, #2a2430, #1a2030 60%);
-    }
+    .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); align-items:stretch}
+    .card{background:var(--card); border:1px solid var(--border); border-radius:18px; box-shadow:var(--shadow); display:flex; flex-direction:column; overflow:hidden}
+    .card .thumb{aspect-ratio:16/9; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#fff7dc,#ffffff 60%); font-size:38px}
+    .dark .card .thumb{background:linear-gradient(135deg,#2a2430,#1a2030 60%)}
     .card .body{padding:14px 14px 8px}
     .card h3{margin:0 0 6px; font-size:18px}
     .card p{margin:0 0 14px; color:var(--muted); font-size:14px}
-    .go{
-      margin:0 14px 14px; display:inline-block; padding:10px 14px; border-radius:12px;
-      background:var(--accent); color:var(--accent-ink); text-align:center; font-weight:700
-    }
+    .go{margin:0 14px 14px; display:inline-block; padding:10px 14px; border-radius:12px; background:var(--accent); color:var(--accent-ink); text-align:center; font-weight:700}
 
-    /* ========= STOPKA ========= */
-    footer{
-      margin-top:36px; border-top:1px solid var(--border);
-      background:linear-gradient(180deg, transparent, rgba(0,0,0,.02));
-    }
-    .dark footer{ background:linear-gradient(180deg, transparent, rgba(255,255,255,.02)); }
+    footer{margin-top:36px; border-top:1px solid var(--border); background:linear-gradient(180deg,transparent,rgba(0,0,0,.02))}
+    .dark footer{background:linear-gradient(180deg,transparent,rgba(255,255,255,.02))}
     footer .wrap{padding-top:18px; padding-bottom:32px; color:var(--muted); font-size:14px}
+
+    /* pływający przełącznik D/N */
+    #modeBtn{position:fixed; right:18px; bottom:18px; padding:10px 14px; border-radius:999px; border:1px solid var(--border); background:var(--card); color:var(--ink); box-shadow:0 8px 22px rgba(0,0,0,.18); cursor:pointer; font-weight:700}
   </style>
 </head>
 <body>
 
-
-
-
+  <main class="wrap">
     <!-- GRID -->
     <section id="grid" class="grid" aria-live="polite"></section>
 
@@ -146,128 +57,56 @@
   </main>
 
   <footer>
-    <div class="wrap">
-      © 2025 Ramzi • Hub projektów • GitHub Pages
-    </div>
+    <div class="wrap">© 2025 Ramzi • Hub projektów • GitHub Pages</div>
   </footer>
 
+  <!-- Przełącznik Dzień/Noc -->
+  <button id="modeBtn" aria-label="Przełącz tryb">🌙 Noc</button>
+
   <script>
-    /* ===== DANE (dopisz nowe obiekty, by dodać link) ===== */
+    // ===== DANE =====
     const projects = [
-      {
-        title: "Siedliszcze — strona główna",
-        url: "https://majstered.github.io/siedliszcze.github.io/",
-        desc: "Aktualności, zdjęcia i informacje o naszej miejscowości.",
-        emoji: "🏠",
-        cat: "Miejscowość"
-      },
-      {
-        title: "Strażopis",
-        url: "https://majstered.github.io/strazopis.github.io/",
-        desc: "Publicystyka, opowieści i reportaże.",
-        emoji: "✍️",
-        cat: "Publicystyka"
-      },
-      {
-        title: "Odpady • Ekologia",
-        url: "https://majstered.github.io/odpady.github.io/",
-        desc: "Segregacja, kalendarze odbioru i porady zero-waste.",
-        emoji: "♻️",
-        cat: "Ekologia"
-      },
-      {
-        title: "Yanopis",
-        url: "https://majstered.github.io/yanopis.github.io/",
-        desc: "Duchowe rozważania, modlitwy, materiały do czytania.",
-        emoji: "📜",
-        cat: "Duchowość"
-      },
-      /* ===== Znaki Maryi — placeholdery (podmień URL-e) ===== */
-      {
-        title: "Znaki Maryi — Rozdział 1: Jak spotkać Maryję?",
-        url: "#",
-        desc: "Wprowadzenie w ciszę, skupienie i drogę serca.",
-        emoji: "🌹",
-        cat: "Znaki Maryi"
-      },
-      {
-        title: "Znaki Maryi — Różaniec",
-        url: "#",
-        desc: "Znaczenie różańca, obietnice i praktyka na co dzień.",
-        emoji: "📿",
-        cat: "Znaki Maryi"
-      },
-      {
-        title: "Znaki Maryi — Objawienia przez wieki",
-        url: "#",
-        desc: "Chronologia uznanych objawień i ich przesłanie.",
-        emoji: "🕊️",
-        cat: "Znaki Maryi"
-      },
+      { title:"Siedliszcze — strona główna", url:"https://majstered.github.io/siedliszcze.github.io/", desc:"Aktualności, zdjęcia i informacje o naszej miejscowości.", emoji:"🏠" },
+      { title:"Strażopis", url:"https://majstered.github.io/strazopis.github.io/", desc:"Publicystyka, opowieści i reportaże.", emoji:"✍️" },
+      { title:"Odpady • Ekologia", url:"https://majstered.github.io/odpady.github.io/", desc:"Segregacja, kalendarze odbioru i porady zero-waste.", emoji:"♻️" },
+      { title:"Yanopis", url:"https://majstered.github.io/yanopis.github.io/", desc:"Duchowe rozważania, modlitwy, materiały do czytania.", emoji:"📜" },
+      { title:"Znaki Maryi — Rozdział 1: Jak spotkać Maryję?", url:"#", desc:"Wprowadzenie w ciszę, skupienie i drogę serca.", emoji:"🌹" },
+      { title:"Znaki Maryi — Różaniec", url:"#", desc:"Znaczenie różańca, obietnice i praktyka na co dzień.", emoji:"📿" },
+      { title:"Znaki Maryi — Objawienia przez wieki", url:"#", desc:"Chronologia uznanych objawień i ich przesłanie.", emoji:"🕊️" },
     ];
 
-    /* ===== RENDER ===== */
+    // ===== RENDER (bez filtrów) =====
     const grid = document.getElementById('grid');
-    const chips = document.getElementById('chips');
-    let activeCat = '*';
-
     function createCard(item){
       const el = document.createElement('article');
       el.className = 'card';
       el.innerHTML = `
         <div class="thumb" aria-hidden="true">${item.emoji ?? "🔗"}</div>
-        <div class="body">
-          <h3>${item.title}</h3>
-          <p>${item.desc}</p>
-        </div>
-        <a class="go" href="${item.url}">Przejdź</a>
-      `;
+        <div class="body"><h3>${item.title}</h3><p>${item.desc}</p></div>
+        <a class="go" href="${item.url}">Przejdź</a>`;
       return el;
     }
+    grid.innerHTML = '';
+    projects.forEach(it => grid.appendChild(createCard(it)));
 
-    function applyFilters(){
-      grid.innerHTML = '';
-      projects
-        .filter(it => activeCat==='*' ? true : it.cat===activeCat)
-        .forEach(it => grid.appendChild(createCard(it)));
-    }
-
-    // FILTRY (chips)
-    chips.addEventListener('click', (e)=>{
-      const btn = e.target.closest('.chip');
-      if(!btn) return;
-      [...chips.querySelectorAll('.chip')].forEach(c=>c.classList.remove('active'));
-      btn.classList.add('active');
-      activeCat = btn.dataset.cat;
-      applyFilters();
-    });
-
-    // TRYB DZIEŃ/NOC z zapisem w localStorage
+    // ===== Dzień/Noc (z pamięcią) =====
     const modeBtn = document.getElementById('modeBtn');
     const LS_KEY = 'ramzi_mode';
-    function setMode(mode){
+    function applyMode(mode){
       if(mode==='dark'){ document.documentElement.classList.add('dark'); modeBtn.textContent='☀️ Dzień'; }
-      else { document.documentElement.classList.remove('dark'); modeBtn.textContent='🌙 Noc'; }
+      else{ document.documentElement.classList.remove('dark'); modeBtn.textContent='🌙 Noc'; }
       localStorage.setItem(LS_KEY, mode);
     }
-    // startowy stan
-    setMode(localStorage.getItem(LS_KEY) || 'auto');
-    // auto = użyj prefers-color-scheme
-    if(localStorage.getItem(LS_KEY)==='auto' || !localStorage.getItem(LS_KEY)){
-      if(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches){
-        document.documentElement.classList.add('dark'); modeBtn.textContent='☀️ Dzień';
-      } else {
-        document.documentElement.classList.remove('dark'); modeBtn.textContent='🌙 Noc';
-      }
+    const saved = localStorage.getItem(LS_KEY);
+    if(saved){ applyMode(saved); }
+    else{
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyMode(prefersDark ? 'dark' : 'light');
     }
-    // przełącznik
     modeBtn.addEventListener('click', ()=>{
       const isDark = document.documentElement.classList.contains('dark');
-      setMode(isDark ? 'light' : 'dark');
+      applyMode(isDark ? 'light' : 'dark');
     });
-
-    // PIERWSZE RENDEROWANIE
-    applyFilters();
   </script>
 </body>
 </html>
